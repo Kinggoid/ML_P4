@@ -27,7 +27,6 @@ class Neuron:
         update = sum(inputs_met_weight) + self.bias
         self.output = 1 / (1 + np.exp(-update))
 
-
     def N_derivative(self):
         """Bereken de derivative van deze neuron."""
         self.derivative = self.output * (1 - self.output)

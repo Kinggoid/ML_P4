@@ -20,16 +20,20 @@ class NeuronLaag:
         """Haal van elk van de neuronen uit deze laag hun weight die zij hebben met een gegeven neuron uit een vorige
         laag."""
         weights = []
-        for i in self.neurons:
-            weights.append(i.weights[which_neuron])
+        for neuron in self.neurons:
+            weights.append(neuron.weights[which_neuron])
         return weights
 
     def get_errors(self):
         """Haal van elk van de neuronen uit deze laag hun error."""
         errors = []
-        for i in self.neurons:
-            errors.append(i.error)
+        for neuron in self.neurons:
+            errors.append(neuron.error)
         return errors
+
+    def update_layer(self):
+        for neuron in self.neurons:
+            neuron.update()
 
     def __str__(self):
         """Informatie van de neuronlaag."""

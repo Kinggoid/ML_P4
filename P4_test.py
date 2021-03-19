@@ -16,10 +16,6 @@ class MyTestCase(unittest.TestCase):
         laag_een = NeuronLaag([AND], 'L1')
         ANDer = NeuronNetwork([laag_een])
 
-        for i in range(0, len(inputs)):
-            ANDer.feed_forward(inputs[i])
-            ANDer.loss(verwachte_outputs[i])
-
         ANDer.train(inputs, verwachte_outputs, epochs)
 
         antwoorden = []
@@ -27,7 +23,7 @@ class MyTestCase(unittest.TestCase):
         for i in inputs:
             ANDer.feed_forward(i)
             tussen_antwoorden = []
-            for j in ANDer.output_neuronen:
+            for j in ANDer.output_neuronen[-1]:
                 if (j % 1) == 0.5:
                     tussen_antwoorden.append(int(math.ceil(j)))
                 else:
@@ -59,7 +55,7 @@ class MyTestCase(unittest.TestCase):
         for i in inputs:
             XOR.feed_forward(i)
             tussen_antwoorden = []
-            for j in XOR.output_neuronen:
+            for j in XOR.output_neuronen[-1]:
                 if (j % 1) == 0.5:
                     tussen_antwoorden.append(int(math.ceil(j)))
                 else:
@@ -92,7 +88,7 @@ class MyTestCase(unittest.TestCase):
         for i in inputs:
             Half_adder.feed_forward(i)
             tussen_antwoorden = []
-            for j in Half_adder.output_neuronen:
+            for j in Half_adder.output_neuronen[-1]:
                 if (j % 1) == 0.5:
                     tussen_antwoorden.append(int(math.ceil(j)))
                 else:
